@@ -47,9 +47,9 @@ ACTIONS = {
 # TIME OF DAY
 # Dictionary of day-portion tuples
 TIME_OF_DAY = {
-    "morning": ("dawn", "mid-morning"),
-    "afternoon": ("noon", "mid-afternoon"),
-    "night": ("6 pm", "8 pm", "10 pm", "midnight"),
+    "morning": ("dawn", "mid-morning", "late morning"),
+    "afternoon": ("noon", "mid-afternoon", "late afternoon"),
+    "night": ("early evening", "dusk", "late evening", "midnight"),
 }
 
 
