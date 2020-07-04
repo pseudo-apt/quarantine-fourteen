@@ -62,3 +62,10 @@ class QuarantineStatus(object):
         self.energy = energy
         self.fulfillment = fulfillment
         self.action_history = action_history
+
+    # When applying an action, get the Action object from the global ACTIONS
+    # dict: `state.apply_action(ACTIONS["drink_beer"])`
+    def apply_action(self, action_name: str):
+        action: Action = ACTIONS[action_name]
+        self.energy += action.delta_energy
+        self.fulfillment += action.delta_fulfillment
