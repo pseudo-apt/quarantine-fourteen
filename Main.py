@@ -4,6 +4,11 @@ from asciimatics.effects import Cycle, Stars
 from asciimatics.renderers import FigletText
 
 def demo(screen):
+    screen.set_title("Quarantine Fourteen")
+
+    scenes = []
+
+    # First scene- title sequence
     effects = [
         Cycle(
             screen,
