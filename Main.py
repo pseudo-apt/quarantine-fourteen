@@ -1,3 +1,5 @@
+from typing import List
+
 # ACTIONS
 # Format: (energy change, fulfillment change, repetitive effect)
 
@@ -89,6 +91,17 @@ LISTEN_TO_RADIO = (
 )
 
 
+class Action(object):
+    """Class for an action that can be done by the user.
+
+    """
+
+    def __init__(self, delta_energy, delta_fulfillment):
+        super(Action, self).__init__()
+        self.delta_energy = delta_energy
+        self.delta_fulfillment = delta_fulfillment
+
+
 # TIME OF DAY
 # Dictionary of day-portion tuples
 TIME_OF_DAY = {
@@ -103,7 +116,7 @@ class QuarantineStatus(object):
 
     """
 
-    def __init__(self, energy: int, fulfillment: int, action_history: list):
+    def __init__(self, energy: int, fulfillment: int, action_history: List[Action]):
         self.energy = energy
         self.fulfillment = fulfillment
         self.action_history = action_history
