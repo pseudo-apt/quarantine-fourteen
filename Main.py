@@ -96,3 +96,13 @@ TIME_OF_DAY = {
     "afternoon": ("noon", "mid-afternoon"),
     "night": ("6 pm", "8 pm", "10 pm", "midnight"),
 }
+
+
+class QuarantineStatus:
+    """Object for tracking user state.
+
+    """
+
+    def __init__(self, energy, fulfillment):
+        self.energy = energy
+        self.fulfillment = fulfillment
