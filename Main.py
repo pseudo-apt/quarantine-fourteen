@@ -3,93 +3,6 @@ from typing import List
 # ACTIONS
 # Format: (energy change, fulfillment change, repetitive effect)
 
-DRINK_BEER = (
-    -10,
-    +10,
-    # TODO: drunk_function?
-)
-MOVE_ROOM = (
-    -5,
-    0,
-    # TODO: decrease fulfillment multiplicatively
-)
-
-EAT_DELIVERY = (
-    +5,
-    +5,
-    # TODO: decrease energy and fulfillment multiplicatively
-)
-
-EAT_HOMECOOKED = (
-    +5,
-    +10,
-    # TODO: decrease energy from eating too much, increase fulfillment multiplicatively
-)
-
-SCREEN_TIME = (
-    -5,
-    -5,
-    # TODO: decrease energy, decrease fulfillment multiplicatively
-)
-
-CHECK_EMAIL = (
-    0,
-    0,
-    # TODO: decrease fulfillment multiplicatively
-)
-
-BUY_ONLINE = (
-    +10,
-    +20,
-    # TODO: big decrease in energy and fulfillment
-)
-
-NETFLIX_BINGING = (
-    -10,
-    20,
-    # TODO: big decrease in fulfillment
-)
-
-COOKING = (
-    -20,
-    +20,
-    # TODO: big increase in fulfillment
-)
-
-WORKOUT = (
-    -20,
-    +5,
-    # TODO: Fibonacci increase in fulfillment
-)
-
-NAP = (
-    +12,
-    -10,
-    # TODO: drop fulfillment to zero if a portion of day is spent napping
-)
-
-ZOOM_CALL = (
-    -10,
-    0,
-    # TODO: decrease fulfillment multiplicatively
-)
-
-PEOPLE_WATCH = (
-    0,
-    +15,
-)
-
-DRINK_CAFFEINE = (
-    +20,
-    0,
-    # TODO: drink too much, can't sleep/nap for 3 actions
-)
-
-LISTEN_TO_RADIO = (
-    0,
-    +15,
-)
-
 
 class Action(object):
     """Class for an action that can be done by the user.
@@ -100,6 +13,35 @@ class Action(object):
         super(Action, self).__init__()
         self.delta_energy = delta_energy
         self.delta_fulfillment = delta_fulfillment
+
+
+ACTIONS = {
+    "drink_beer": Action(-10, +10),  # TODO: drunk_function?
+    "move_room": Action(-5, 0),  # TODO: decrease fulfillment multiplicatively
+    "eat_delivery": Action(
+        +5, +5
+    ),  # TODO: decrease energy and fulfillment multiplicatively
+    "eat_homecooked": Action(
+        +5, +10
+    ),  # TODO: decrease energy from eating too much, increase fulfillment multiplicatively
+    "screen_time": Action(
+        -5, -5
+    ),  # TODO: decrease energy, decrease fulfillment multiplicatively
+    "check_email": Action(0, 0),  # TODO: decrease fulfillment multiplicatively
+    "buy_online": Action(+10, +20),  # TODO: big decrease in energy and fulfillment
+    "binge_netflix": Action(-10, +20),  # TODO: big decrease in fulfillment
+    "cook_food": Action(-20, +20),  # TODO: big increase in fulfillment
+    "workout": Action(-20, +5),  # TODO: Fibonacci increase in fulfillment
+    "nap": Action(
+        +12, -10
+    ),  # TODO: drop fulfillment to zero if a portion of day is spent napping
+    "zoom_call": Action(-10, 0),
+    # TODO: decrease fulfillment multiplicatively
+    "people_watch": Action(0, +15),
+    "drink_caffeine": Action(+20, 0),
+    # TODO: drink too much, can't sleep/nap for 3 actions
+    "listen_to_radio": Action(0, +15),
+}
 
 
 # TIME OF DAY
