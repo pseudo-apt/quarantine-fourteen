@@ -3,6 +3,8 @@ from asciimatics.scene import Scene
 from asciimatics.effects import Cycle, Stars
 from asciimatics.renderers import FigletText
 
+from scenes import intro
+
 def demo(screen):
     screen.set_title("Quarantine Fourteen")
 
@@ -22,7 +24,7 @@ def demo(screen):
     ]
     screen.play([Scene(effects, 500)])
 
-Screen.wrapper(demo)
+Screen.wrapper(intro.demo)
 
 # ACTIONS
 # Format: (energy change, fulfillment change, repetitive effect)
