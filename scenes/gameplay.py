@@ -12,23 +12,29 @@ form_data = {
 
 class DemoFrame(Frame):
     def __init__(self, screen, game_text):
-        super(DemoFrame, self).__init__(screen,
-                                        int(screen.height * 2 // 3),
-                                        int(screen.width * 2 // 3),
-                                        data=form_data,
-                                        has_shadow=True,
-                                        has_border=False,
-                                        name="Player input")
+        super(DemoFrame, self).__init__(
+            screen,
+            int(screen.height * 2 // 3),
+            int(screen.width * 2 // 3),
+            data=form_data,
+            has_shadow=True,
+            has_border=False,
+            name="Player input",
+        )
         layout = Layout([1, 18, 1])
         self.add_layout(layout)
         self.set_theme("monochrome")
         layout.add_widget(Label(game_text), 1)
         layout.add_widget(
-            TextBox(height=1,
-                 label="> ",
-                 name="user_input",
-                 on_change=self._on_change,
-                 as_string=True), 1)
+            TextBox(
+                height=1,
+                label="> ",
+                name="user_input",
+                on_change=self._on_change,
+                as_string=True,
+            ),
+            1,
+        )
         self.fix()
 
     def _on_change(self):
@@ -39,4 +45,3 @@ class DemoFrame(Frame):
             if "\n" in self.data["user_input"]:
                 self.reset()
                 raise NextScene()
-
