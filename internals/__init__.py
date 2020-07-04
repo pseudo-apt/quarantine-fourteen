@@ -53,7 +53,7 @@ TIME_OF_DAY = {
 }
 
 
-def advance_time():
+def time_of_day_generator():
     for day in range(1, 15):
         for day_portion in TIME_OF_DAY:
             for time in TIME_OF_DAY[day_portion]:
@@ -68,7 +68,7 @@ class QuarantineStatus(object):
     def __init__(self, energy: int, fulfillment: int, action_history: List[Action]):
         self.energy = energy
         self.fulfillment = fulfillment
-        self.time_gen = advance_time()
+        self.time_gen = time_of_day_generator()
         self.current_time = next(self.time_gen)
         self.action_history = action_history
 
