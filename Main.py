@@ -98,11 +98,12 @@ TIME_OF_DAY = {
 }
 
 
-class QuarantineStatus:
+class QuarantineStatus(object):
     """Object for tracking user state.
 
     """
 
-    def __init__(self, energy, fulfillment):
+    def __init__(self, energy: int, fulfillment: int, action_history: list):
         self.energy = energy
         self.fulfillment = fulfillment
+        self.action_history = action_history
