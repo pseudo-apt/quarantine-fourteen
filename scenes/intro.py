@@ -1,12 +1,9 @@
-from random import randint
-from asciimatics.effects import Print, Cycle, Stars
+from asciimatics.effects import Print, Cycle, Stars, BannerText, Mirage, Scroll
 from asciimatics.particles import Explosion, StarFirework, DropScreen, Rain, \
     ShootScreen
 from asciimatics.renderers import SpeechBubble, FigletText, Rainbow
 from asciimatics.scene import Scene
 from asciimatics.screen import Screen
-from asciimatics.exceptions import ResizeScreenError
-import sys
 
 def demo(screen):
 	scenes = []
@@ -26,9 +23,54 @@ def demo(screen):
 			SpeechBubble("Press SPACE to continue..."),
 			screen.height - 3,
 			transparent=False,
-			start_frame=70)
+			start_frame=30)
 	]
-	scenes.append(Scene(effects, 500))
-	#scenes.append(Scene(effects, -1))
+	scenes.append(Scene(effects, -1))
+
+	# Quick gameplay mechanics explanation
+	effects = [
+		Print(screen,
+			SpeechBubble("To quit the game at any time, press q. To proceed, press SPACE."),
+			screen.height - 3,
+			transparent=False)
+	]
+	scenes.append(Scene(effects, -1))
+
+	# Second scene: text
+	effects = [
+		Mirage(
+			screen,
+			SpeechBubble("You wake up in your bed, in your apartment"),
+			screen.height // 2 - 1,
+			colour=Screen.COLOUR_WHITE),
+	]
+	scenes.append(Scene(effects, -1))
+
+	effects = [
+		Mirage(
+			screen,
+			SpeechBubble("The world feels different somehow"),
+			screen.height // 2 + 1,
+			colour=Screen.COLOUR_WHITE),
+	]
+	scenes.append(Scene(effects, -1))
+
+	effects = [
+		Mirage(
+			screen,
+			SpeechBubble("Your phone rings. It's a doctor from your local public health authority."),
+			screen.height // 2 + 2,
+			colour=Screen.COLOUR_WHITE),
+	]
+	scenes.append(Scene(effects, -1))
+
+	effects = [
+		Mirage(
+			screen,
+			SpeechBubble("\"Thanks for dropping by yesterday. Your results should be in \nwithin the next few days. Please keep yourself isolated \nfor the next 14 days inside your home.\"", tail="L"),
+			screen.height // 2 + 3,
+			colour=Screen.COLOUR_WHITE),
+	]
+	scenes.append(Scene(effects, -1))
 
 	screen.play(scenes)
