@@ -5,8 +5,15 @@ from asciimatics.renderers import FigletText
 
 import internals
 
+from scenes import intro
+
 
 def demo(screen):
+    screen.set_title("Quarantine Fourteen")
+
+    scenes = []
+
+    # First scene- title sequence
     effects = [
         Cycle(screen, FigletText("WELCOME TO", font="big"), screen.height // 2 - 8),
         Cycle(
@@ -18,6 +25,8 @@ def demo(screen):
     ]
     screen.play([Scene(effects, 500)])
 
+
+Screen.wrapper(intro.demo)
 
 Screen.wrapper(demo)
 status = internals.QuarantineStatus(100, 100, [])
