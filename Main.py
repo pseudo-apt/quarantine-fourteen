@@ -1,109 +1,32 @@
-# ACTIONS
-# Format: (energy change, fulfillment change, repetitive effect)
+from asciimatics.screen import Screen
+from asciimatics.scene import Scene
+from asciimatics.effects import Cycle, Stars
+from asciimatics.renderers import FigletText
 
-DRINK_BEER = (
-    -10,
-    +10,
-    # TODO: drunk_function?
-)
-MOVE_ROOM = (
-    -5,
-    0,
-    # TODO: decrease fulfillment multiplicatively
-)
+import internals
 
-EAT_DELIVERY = (
-    +5,
-    +5,
-    # TODO: decrease energy and fulfillment multiplicatively
-)
-
-EAT_HOMECOOKED = (
-    +5,
-    +10,
-    # TODO: decrease energy from eating too much, increase fulfillment multiplicatively
-)
-
-SCREEN_TIME = (
-    -5,
-    -5,
-    # TODO: decrease energy, decrease fulfillment multiplicatively
-)
-
-CHECK_EMAIL = (
-    0,
-    0,
-    # TODO: decrease fulfillment multiplicatively
-)
-
-BUY_ONLINE = (
-    +10,
-    +20,
-    # TODO: big decrease in energy and fulfillment
-)
-
-NETFLIX_BINGING = (
-    -10,
-    20,
-    # TODO: big decrease in fulfillment
-)
-
-COOKING = (
-    -20,
-    +20,
-    # TODO: big increase in fulfillment
-)
-
-WORKOUT = (
-    -20,
-    +5,
-    # TODO: Fibonacci increase in fulfillment
-)
-
-NAP = (
-    +12,
-    -10,
-    # TODO: drop fulfillment to zero if a portion of day is spent napping
-)
-
-ZOOM_CALL = (
-    -10,
-    0,
-    # TODO: decrease fulfillment multiplicatively
-)
-
-PEOPLE_WATCH = (
-    0,
-    +15,
-)
-
-DRINK_CAFFEINE = (
-    +20,
-    0,
-    # TODO: drink too much, can't sleep/nap for 3 actions
-)
-
-LISTEN_TO_RADIO = (
-    0,
-    +15,
-)
+from scenes import intro
 
 
-# TIME OF DAY
-# Dictionary of day-portion tuples
-TIME_OF_DAY = {
-    "morning": ("dawn", "mid-morning"),
-    "afternoon": ("noon", "mid-afternoon"),
-    "night": ("6 pm", "8 pm", "10 pm", "midnight"),
-}
+def demo(screen):
+    screen.set_title("Quarantine Fourteen")
+
+    scenes = []
+
+    # First scene- title sequence
+    effects = [
+        Cycle(screen, FigletText("WELCOME TO", font="big"), screen.height // 2 - 8),
+        Cycle(
+            screen,
+            FigletText("QUARANTINE FOURTEEN", font="big"),
+            screen.height // 2 + 3,
+        ),
+        Stars(screen, (screen.width + screen.height) // 2),
+    ]
+    screen.play([Scene(effects, 500)])
 
 
-class QuarantineStatus(object):
-    """Object for tracking user state.
+Screen.wrapper(intro.demo)
 
-    """
-
-    def __init__(self, energy: int, fulfillment: int, action_history: list):
-        self.energy = energy
-        self.fulfillment = fulfillment
-        self.action_history = action_history
+Screen.wrapper(demo)
+status = internals.QuarantineStatus(100, 100, [])
