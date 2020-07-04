@@ -73,4 +73,4 @@ def demo(screen):
 	]
 	scenes.append(Scene(effects, -1))
 
-	screen.play(scenes)
+	screen.play(scenes, repeat=False)
