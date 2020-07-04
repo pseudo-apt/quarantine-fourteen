@@ -53,6 +53,13 @@ TIME_OF_DAY = {
 }
 
 
+def time_of_day_generator():
+    for day in range(1, 15):
+        for day_portion in TIME_OF_DAY:
+            for time in TIME_OF_DAY[day_portion]:
+                yield day, time
+
+
 class QuarantineStatus(object):
     """Object for tracking user state.
 
@@ -61,11 +68,16 @@ class QuarantineStatus(object):
     def __init__(self, energy: int, fulfillment: int, action_history: List[Action]):
         self.energy = energy
         self.fulfillment = fulfillment
+        self.time_gen = time_of_day_generator()
+        self.current_time = next(self.time_gen)
         self.action_history = action_history
 
     # When applying an action, get the Action object from the global ACTIONS
     # dict: `state.apply_action(ACTIONS["drink_beer"])`
-    def apply_action(self, action_name: str):
+    def apply_action(self, action_name: str) -> bool:
         action: Action = ACTIONS[action_name]
         self.energy += action.delta_energy
         self.fulfillment += action.delta_fulfillment
+        self.current_time = next(self.time_gen)
+        self.action_history.append(action)
+        return True
