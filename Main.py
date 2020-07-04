@@ -3,6 +3,8 @@ from asciimatics.scene import Scene
 from asciimatics.effects import Cycle, Stars
 from asciimatics.renderers import FigletText
 
+import internals
+
 
 def demo(screen):
     effects = [
@@ -18,3 +20,4 @@ def demo(screen):
 
 
 Screen.wrapper(demo)
+status = internals.QuarantineStatus(100, 100, [])
