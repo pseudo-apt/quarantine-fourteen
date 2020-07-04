@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "quarantine-fourteen"
+version = "0.1.0"
+description = "A text-based game about 14 days in quarantine."
+authors = ["jidicula <johanan.idicula@gmail.com>"]
+license = "MIT License"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+asciimatics = "^1.11.0"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+mypy = "^0.782"
+rope = "^0.17.0"
+pyflakes = "^2.2.0"
+jedi = "^0.17.1"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
