@@ -8,7 +8,7 @@ You're stuck in your apartment for a 14-day quarantine - how do you survive? Qua
 
 Your character has 2 key stats: energy and fulfillment. What's the goal? Make it out of quarantine with the maximum energy and fulfillment!
 
-10 times a day, you pick an action that will change your stats in different ways. Choose wisely! The actions you choose could have different consequences depending on how they're combined.
+10 times a day, you pick an action that will change your stats in different ways. Choose wisely! The actions you choose could have different effects depending on how they're combined.
 
 # Available Actions
 You can:
