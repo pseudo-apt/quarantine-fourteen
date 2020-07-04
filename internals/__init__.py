@@ -61,11 +61,19 @@ class QuarantineStatus(object):
     def __init__(self, energy: int, fulfillment: int, action_history: List[Action]):
         self.energy = energy
         self.fulfillment = fulfillment
+        self.time = None
         self.action_history = action_history
 
     # When applying an action, get the Action object from the global ACTIONS
     # dict: `state.apply_action(ACTIONS["drink_beer"])`
-    def apply_action(self, action_name: str):
+    def apply_action(self, action_name: str) -> bool:
         action: Action = ACTIONS[action_name]
         self.energy += action.delta_energy
         self.fulfillment += action.delta_fulfillment
+        return True
+
+    def advance_time(self):
+        for day in range(1, 15):
+            for day_portion in TIME_OF_DAY.keys():
+                for time in TIME_OF_DAY[day_portion]:
+                    yield time
