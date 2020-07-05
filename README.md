@@ -1,5 +1,10 @@
 # Welcome to Quarantine Fourteen!
 
+## Build Statuses
+
+![poetry-install-check](https://github.com/pseudo-apt/quarantine-fourteen/workflows/poetry-install-check/badge.svg)
+![formatting-check](https://github.com/pseudo-apt/quarantine-fourteen/workflows/formatting-check/badge.svg)
+
 # Introduction
 
 You're stuck in your apartment for a 14-day quarantine - how do you survive? Quarantine Fourteen is a text-based adventure game simulating the conditions that many of us are in right now.
