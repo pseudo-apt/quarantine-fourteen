@@ -16,16 +16,23 @@ def demo(screen):
     screen.set_title("Quarantine Fourteen")
     intro.demo(screen)
 
+    quarantine_status = internals.QuarantineStatus(10, 10, [])
+
     scenes = []
 
     game_text = "It's 8AM. You get up out of bed. What do you do?"
     action_index = 0
-    for action in internals.ACTIONS.keys():
+    options = ""
+    action_names = [a for a in internals.ACTIONS.keys()]
+    for action in action_names:
         action_name = action.replace("_", " ")
-        game_text += f"\n{action_index}- {action_name}"
+        options += f"\n{action_index}- {action_name}"
         action_index += 1
+    game_text += options
 
     while True:
+        with open("gametext.txt", "a") as f:
+            f.write(game_text)
         new_screen = gameplay.DemoFrame(screen, game_text)
         effects = [
             new_screen,
@@ -42,6 +49,11 @@ def demo(screen):
         if not is_valid:
             continue
         user_choice = int(user_input)
+
+        quarantine_state.apply_action(action_names[user_choice])
+
+        game_text = f"It's {quarantine_status.current_time}. You're in {quarantine_status.current_room}.\n Your energy is {quarantine_status.energy}% and your filfillment is {quarantine_status.fulfillment}%. What do you do?"
+        game_text += options
 
     ending.scene(screen)
 
