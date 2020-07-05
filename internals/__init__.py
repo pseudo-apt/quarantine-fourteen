@@ -52,23 +52,41 @@ ACTIONS: Dict[str, Action] = {
         0, 0, "Nothing."
     ),  # TODO: decrease fulfillment multiplicatively
     "buy_online": BasicAction(
-        +10, +20, "How are you spending the same amount and you can't even leave your apartment?"
+        +10,
+        +20,
+        "How are you spending the same amount and you can't even leave your apartment?",
     ),  # TODO: big decrease in energy and fulfillment
-    "binge_netflix": BasicAction(-10, +20, "Anoter episode down of a show you'll watch most of and then forget.\n "
-                                           "Not the worst use of time."),  # TODO: big decrease in fulfillment
+    "binge_netflix": BasicAction(
+        -10,
+        +20,
+        "Anoter episode down of a show you'll watch most of and then forget.\n "
+        "Not the worst use of time.",
+    ),  # TODO: big decrease in fulfillment
     # "cook_food": BasicAction(-20, +20, "TODO"),  # TODO: big increase in fulfillment
-    "workout": BasicAction(-20, +5, "You're tired, but in a good way."),  # TODO: Fibonacci increase in fulfillment
+    "workout": BasicAction(
+        -20, +5, "You're tired, but in a good way."
+    ),  # TODO: Fibonacci increase in fulfillment
     # "nap": BasicAction(
     #     +12, -10, "What a waste of time. Refreshing, though."
     # ),  # TODO: drop fulfillment to zero if a portion of day is spent napping
     "zoom_call": BasicAction(-10, 0, "....."),
     # TODO: decrease fulfillment multiplicatively
-    "people_watch": BasicAction(0, +15, "A few people drift by, maybe 30% slower than they'd usually walk."),
-    "drink_caffeine": BasicAction(+20, 0, "The buzzing at the base of your skull is louder. \n"
-                                          "Maybe you should get it looked at?"),
+    "people_watch": BasicAction(
+        0, +15, "A few people drift by, maybe 30% slower than they'd usually walk."
+    ),
+    "drink_caffeine": BasicAction(
+        +20,
+        0,
+        "The buzzing at the base of your skull is louder. \n"
+        "Maybe you should get it looked at?",
+    ),
     # TODO: drink too much, can't sleep/nap for 3 actions
-    "listen_to_radio": BasicAction(0, +15, "For better or for worse, you're now more informed about the \n"
-                                           "state of the world. Some numbers are up; others are down."),
+    "listen_to_radio": BasicAction(
+        0,
+        +15,
+        "For better or for worse, you're now more informed about the \n"
+        "state of the world. Some numbers are up; others are down.",
+    ),
 }
 
 
