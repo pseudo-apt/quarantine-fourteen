@@ -31,10 +31,16 @@ class BasicAction(Action):
 
 
 ACTIONS: Dict[str, Action] = {
-    "drink_beer": BasicAction(-10, +10, "You feel refreshed, and a little bit light-headed."),  # TODO: drunk_function?
-    "move_room": BasicAction(-5, 0, "You're here. Now what?"),  # TODO: decrease fulfillment multiplicatively
+    "drink_beer": BasicAction(
+        -10, +10, "You feel refreshed, and a little bit light-headed."
+    ),  # TODO: drunk_function?
+    "move_room": BasicAction(
+        -5, 0, "You're here. Now what?"
+    ),  # TODO: decrease fulfillment multiplicatively
     "eat_delivery": BasicAction(
-        +5, +5, "The delivery charge brought the price up a surprising amount. Still... you deserved it."
+        +5,
+        +5,
+        "The delivery charge brought the price up a surprising amount. Still... you deserved it.",
     ),  # TODO: decrease energy and fulfillment multiplicatively
     "eat_homecooked": BasicAction(
         +5, +10, "You wonder why you ever order delivery until you look at the clock."
@@ -42,8 +48,12 @@ ACTIONS: Dict[str, Action] = {
     "screen_time": BasicAction(
         -5, -5, "....."
     ),  # TODO: decrease energy, decrease fulfillment multiplicatively
-    "check_email": BasicAction(0, 0, "Nothing."),  # TODO: decrease fulfillment multiplicatively
-    "buy_online": BasicAction(+10, +20, "TODO"),  # TODO: big decrease in energy and fulfillment
+    "check_email": BasicAction(
+        0, 0, "Nothing."
+    ),  # TODO: decrease fulfillment multiplicatively
+    "buy_online": BasicAction(
+        +10, +20, "TODO"
+    ),  # TODO: big decrease in energy and fulfillment
     "binge_netflix": BasicAction(-10, +20, "TODO"),  # TODO: big decrease in fulfillment
     "cook_food": BasicAction(-20, +20, "TODO"),  # TODO: big increase in fulfillment
     "workout": BasicAction(-20, +5, "TODO"),  # TODO: Fibonacci increase in fulfillment
@@ -77,12 +87,19 @@ def time_of_day_generator():
 
 class QuarantineStatus(object):
     """
-    Object for tracking user state.
+    Object for tracking user state. Possible rooms are "bedroom",
+    "living room", and "kitchen".
     """
 
-    def __init__(self, energy: int, fulfillment: int, action_history: List[Tuple["QuarantineStatus", Action]]):
+    def __init__(
+        self,
+        energy: int,
+        fulfillment: int,
+        action_history: List[Tuple["QuarantineStatus", Action]],
+    ):
         self.energy: int = energy
         self.fulfillment: int = fulfillment
+        self.current_room = "bedroom"
         self._action_history: List[Tuple[QuarantineStatus, Action]] = action_history
 
     @property
