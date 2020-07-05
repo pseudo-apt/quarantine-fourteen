@@ -4,6 +4,8 @@
 
 You're stuck in your apartment for a 14-day quarantine - how do you survive? Quarantine Fourteen is a text-based adventure game simulating the conditions that many of us are in right now.
 
+![screenshot](https://i.imgur.com/GtUGDMp.png)
+
 # Gameplay
 
 Your character has 2 key stats: energy and fulfillment. What's the goal? Make it out of quarantine with the maximum energy and fulfillment!
