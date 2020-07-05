@@ -18,8 +18,6 @@ def demo(screen):
 
     quarantine_status = internals.QuarantineStatus(10, 10, [])
 
-    scenes = []
-
     game_text = "It's 8AM. You get up out of bed. What do you do?"
     action_index = 0
     options = ""
@@ -31,6 +29,7 @@ def demo(screen):
     game_text += options
 
     while True:
+        scenes = []
         new_screen = gameplay.DemoFrame(screen, game_text)
         effects = [
             new_screen,
