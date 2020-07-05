@@ -63,7 +63,7 @@ ACTIONS: Dict[str, Action] = {
     "binge_netflix": BasicAction(
         -10,
         +20,
-        "Anoter episode down of a show you'll watch most of and then forget.\n "
+        "Another episode down of a show you'll watch most of and then forget.\n "
         "Not the worst use of time.",
     ),  # TODO: big decrease in fulfillment
     # "cook_food": BasicAction(-20, +20, "TODO"),  # TODO: big increase in fulfillment
