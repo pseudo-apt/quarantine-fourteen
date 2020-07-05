@@ -81,7 +81,7 @@ class QuarantineStatus(object):
     @property
     def available_actions(self) -> List[str]:
         """
-        Returns a list of available actions by copying the state and testing of they return None.
+        Returns a list of available actions by copying the state and testing if they return None.
         TODO: Separate "invalid" from "will just say something dumb and not do anything"
         """
 
