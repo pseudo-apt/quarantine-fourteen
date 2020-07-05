@@ -49,9 +49,8 @@ def demo(screen):
 
         quarantine_status.apply_action(action_names[user_choice])
 
-        game_text = f"It's {quarantine_status.current_time[1]}. You're in {quarantine_status.current_room}.\n Your energy is {quarantine_status.energy}% and your filfillment is {quarantine_status.fulfillment}%. What do you do?"
+        game_text = f"It's {quarantine_status.current_time[1]}. You're in {quarantine_status.current_room}.\n Your energy is {quarantine_status.energy}% and your fulfillment is {quarantine_status.fulfillment}%. What do you do?"
         game_text += options
-
 
     ending.scene(screen)
 
