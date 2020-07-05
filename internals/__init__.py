@@ -100,6 +100,8 @@ class QuarantineStatus(object):
         self.energy: int = energy
         self.fulfillment: int = fulfillment
         self.current_room = "bedroom"
+        self.time_gen = time_of_day_generator()
+        self.current_time = next(self.time_gen)
         self._action_history: List[Tuple[QuarantineStatus, Action]] = action_history
 
     @property
@@ -129,6 +131,7 @@ class QuarantineStatus(object):
         result = action.apply(self)
 
         if result is not None:
+            self.current_time = next(self.time_gen)
             self._action_history.append((old_state, action))
             return result
 
