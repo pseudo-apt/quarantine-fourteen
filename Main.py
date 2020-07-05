@@ -8,8 +8,10 @@ import internals
 
 from scenes import intro, gameplay
 
-
 def demo(screen):
+    """
+	Renders the intro sequence, and the user input game screens
+    """
     screen.set_title("Quarantine Fourteen")
     intro.demo(screen)
 
@@ -25,12 +27,23 @@ def demo(screen):
 
         screen.play(scenes, repeat=False)
 
-        user_input = new_screen.data["user_input"]
+        user_input = gameplay.USER_INPUTS[-1]
 
         if user_input == "quit\n":
             sys.exit(0)
 
 
-Screen.wrapper(demo)
+def process_user_input(user_input: str):
+    """
+        Process what the user input and try to translate it into an action
+    """
+    input_lowercase = user_input.lower().rstrip()
 
-status = internals.QuarantineStatus(100, 100, [])
+
+if __name__ == "__main__":
+
+    # Render the game
+    Screen.wrapper(demo)
+
+    status = internals.QuarantineStatus(100, 100, [])
+
