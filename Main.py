@@ -6,7 +6,7 @@ import sys
 import internals
 
 
-from scenes import intro, gameplay
+from scenes import intro, gameplay, ending
 
 def demo(screen):
     """
@@ -36,10 +36,13 @@ def demo(screen):
         user_input = gameplay.USER_INPUTS[-1]
         if user_input == "q\n":
             sys.exit(0)
+
         is_valid = validate_user_input(user_input)
         if not is_valid:
             continue
         user_choice = int(user_input)
+
+    ending.scene(screen)
 
 def validate_user_input(user_input):
     valid = False
@@ -49,7 +52,6 @@ def validate_user_input(user_input):
             valid = True
     return valid
         
-
 
 if __name__ == "__main__":
 

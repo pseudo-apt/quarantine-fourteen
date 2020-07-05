@@ -31,25 +31,35 @@ class BasicAction(Action):
 
 
 ACTIONS: Dict[str, Action] = {
-    "drink_beer": BasicAction(-10, +10, "You feel refreshed, and a little bit light-headed."),  # TODO: drunk_function?
-    "move_room": BasicAction(-5, 0, "You're here. Now what?"),  # TODO: decrease fulfillment multiplicatively
+    "drink_beer": BasicAction(
+        -10, +10, "You feel refreshed, and a little bit light-headed."
+    ),  # TODO: drunk_function?
+    # "move_room": BasicAction(
+    #     -5, 0, "You're here. Now what?"
+    # ),  # TODO: decrease fulfillment multiplicatively
     "eat_delivery": BasicAction(
-        +5, +5, "The delivery charge brought the price up a surprising amount. Still... you deserved it."
+        +5,
+        +5,
+        "The delivery charge brought the price up a surprising amount. Still... you deserved it.",
     ),  # TODO: decrease energy and fulfillment multiplicatively
     "eat_homecooked": BasicAction(
         +5, +10, "You wonder why you ever order delivery until you look at the clock."
     ),  # TODO: decrease energy from eating too much, increase fulfillment multiplicatively
-    "screen_time": BasicAction(
+    "scroll_reddit": BasicAction(
         -5, -5, "....."
     ),  # TODO: decrease energy, decrease fulfillment multiplicatively
-    "check_email": BasicAction(0, 0, "Nothing."),  # TODO: decrease fulfillment multiplicatively
-    "buy_online": BasicAction(+10, +20, "TODO"),  # TODO: big decrease in energy and fulfillment
+    "check_email": BasicAction(
+        0, 0, "Nothing."
+    ),  # TODO: decrease fulfillment multiplicatively
+    "buy_online": BasicAction(
+        +10, +20, "TODO"
+    ),  # TODO: big decrease in energy and fulfillment
     "binge_netflix": BasicAction(-10, +20, "TODO"),  # TODO: big decrease in fulfillment
-    "cook_food": BasicAction(-20, +20, "TODO"),  # TODO: big increase in fulfillment
+    # "cook_food": BasicAction(-20, +20, "TODO"),  # TODO: big increase in fulfillment
     "workout": BasicAction(-20, +5, "TODO"),  # TODO: Fibonacci increase in fulfillment
-    "nap": BasicAction(
-        +12, -10, "What a waste of time. Refreshing, though."
-    ),  # TODO: drop fulfillment to zero if a portion of day is spent napping
+    # "nap": BasicAction(
+    #     +12, -10, "What a waste of time. Refreshing, though."
+    # ),  # TODO: drop fulfillment to zero if a portion of day is spent napping
     "zoom_call": BasicAction(-10, 0, "....."),
     # TODO: decrease fulfillment multiplicatively
     "people_watch": BasicAction(0, +15, "TODO"),
@@ -77,12 +87,21 @@ def time_of_day_generator():
 
 class QuarantineStatus(object):
     """
-    Object for tracking user state.
+    Object for tracking user state. Possible rooms are "bedroom",
+    "living room", and "kitchen".
     """
 
-    def __init__(self, energy: int, fulfillment: int, action_history: List[Tuple["QuarantineStatus", Action]]):
+    def __init__(
+        self,
+        energy: int,
+        fulfillment: int,
+        action_history: List[Tuple["QuarantineStatus", Action]],
+    ):
         self.energy: int = energy
         self.fulfillment: int = fulfillment
+        self.current_room = "bedroom"
+        self.time_gen = time_of_day_generator()
+        self.current_time = next(self.time_gen)
         self._action_history: List[Tuple[QuarantineStatus, Action]] = action_history
 
     @property
@@ -112,6 +131,8 @@ class QuarantineStatus(object):
         result = action.apply(self)
 
         if result is not None:
+            # TODO: handle exception when no more iteration can be done
+            self.current_time = next(self.time_gen)
             self._action_history.append((old_state, action))
             return result
 
