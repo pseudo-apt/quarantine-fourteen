@@ -16,9 +16,7 @@ def demo(screen):
 
     scenes = []
 
-    rounds = 0
     while True:
-        rounds += 1
         game_text = "It's 8AM. You get up out of bed. What do you do?"
         new_screen = gameplay.DemoFrame(screen, game_text)
         effects = [
