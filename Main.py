@@ -6,7 +6,7 @@ import sys
 import internals
 
 
-from scenes import intro, gameplay
+from scenes import intro, gameplay, ending
 
 def demo(screen):
     """
@@ -31,6 +31,8 @@ def demo(screen):
 
         if user_input == "quit\n":
             sys.exit(0)
+
+    ending.scene(screen)
 
 
 def process_user_input(user_input: str):
