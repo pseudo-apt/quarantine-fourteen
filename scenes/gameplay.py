@@ -1,6 +1,7 @@
 from asciimatics.widgets import Frame, TextBox, Layout, Label
 from asciimatics.scene import Scene
 from asciimatics.screen import Screen
+from asciimatics.event import KeyboardEvent
 from asciimatics.exceptions import ResizeScreenError, NextScene, StopApplication
 import sys
 
@@ -9,6 +10,7 @@ form_data = {
     "user_input": "",
 }
 
+USER_INPUTS = []
 
 class DemoFrame(Frame):
     def __init__(self, screen, game_text):
@@ -40,8 +42,15 @@ class DemoFrame(Frame):
     def _on_change(self):
         self.save()
         if "user_input" in self.data.keys():
-            if self.data["user_input"] == "quit\n":
-                raise StopApplication("User quit")
-            if "\n" in self.data["user_input"]:
-                self.reset()
-                raise NextScene()
+            if self.data["user_input"] != "":
+                if self.data["user_input"] == "quit\n":
+                    USER_INPUTS.append(self.data["user_input"])
+                    self.reset()
+                    self.data = {}
+                    raise StopApplication("User quit")
+                if self.data["user_input"][-1] == "\n":
+                    USER_INPUTS.append(self.data["user_input"])
+                    self.reset()
+                    self.data = {}
+                    raise StopApplication("Next scene")
+

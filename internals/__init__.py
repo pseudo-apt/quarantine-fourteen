@@ -68,6 +68,13 @@ TIME_OF_DAY = {
 }
 
 
+def time_of_day_generator():
+    for day in range(1, 15):
+        for day_portion in TIME_OF_DAY:
+            for time in TIME_OF_DAY[day_portion]:
+                yield day, time
+
+
 class QuarantineStatus(object):
     """
     Object for tracking user state.
