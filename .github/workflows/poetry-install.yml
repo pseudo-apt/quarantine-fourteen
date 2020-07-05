@@ -1,8 +1,8 @@
 on: push
 
 jobs:
-  pytest:
-    name: pytest
+  poetry-install:
+    name: poetry-install
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
