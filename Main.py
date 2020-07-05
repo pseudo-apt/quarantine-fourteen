@@ -5,6 +5,7 @@ import sys
 
 import internals
 
+
 from scenes import intro, gameplay
 
 def demo(screen):
