@@ -30,7 +30,7 @@ def demo(screen):
         if user_input == "quit\n":
             sys.exit(0)
 
-    ending.ending(screen)
+    ending.scene(screen)
 
 
 Screen.wrapper(demo)
