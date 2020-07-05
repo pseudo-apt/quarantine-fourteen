@@ -34,9 +34,9 @@ ACTIONS: Dict[str, Action] = {
     "drink_beer": BasicAction(
         -10, +10, "You feel refreshed, and a little bit light-headed."
     ),  # TODO: drunk_function?
-    "move_room": BasicAction(
-        -5, 0, "You're here. Now what?"
-    ),  # TODO: decrease fulfillment multiplicatively
+    # "move_room": BasicAction(
+    #     -5, 0, "You're here. Now what?"
+    # ),  # TODO: decrease fulfillment multiplicatively
     "eat_delivery": BasicAction(
         +5,
         +5,
@@ -45,7 +45,7 @@ ACTIONS: Dict[str, Action] = {
     "eat_homecooked": BasicAction(
         +5, +10, "You wonder why you ever order delivery until you look at the clock."
     ),  # TODO: decrease energy from eating too much, increase fulfillment multiplicatively
-    "screen_time": BasicAction(
+    "scroll_reddit": BasicAction(
         -5, -5, "....."
     ),  # TODO: decrease energy, decrease fulfillment multiplicatively
     "check_email": BasicAction(
@@ -55,11 +55,11 @@ ACTIONS: Dict[str, Action] = {
         +10, +20, "TODO"
     ),  # TODO: big decrease in energy and fulfillment
     "binge_netflix": BasicAction(-10, +20, "TODO"),  # TODO: big decrease in fulfillment
-    "cook_food": BasicAction(-20, +20, "TODO"),  # TODO: big increase in fulfillment
+    # "cook_food": BasicAction(-20, +20, "TODO"),  # TODO: big increase in fulfillment
     "workout": BasicAction(-20, +5, "TODO"),  # TODO: Fibonacci increase in fulfillment
-    "nap": BasicAction(
-        +12, -10, "What a waste of time. Refreshing, though."
-    ),  # TODO: drop fulfillment to zero if a portion of day is spent napping
+    # "nap": BasicAction(
+    #     +12, -10, "What a waste of time. Refreshing, though."
+    # ),  # TODO: drop fulfillment to zero if a portion of day is spent napping
     "zoom_call": BasicAction(-10, 0, "....."),
     # TODO: decrease fulfillment multiplicatively
     "people_watch": BasicAction(0, +15, "TODO"),
