@@ -1,9 +1,9 @@
-name: black-check
+name: formatting-check
 
 on: [push]
 
 jobs:
-  black-check:
+  formatting-check:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2

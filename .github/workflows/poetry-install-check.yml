@@ -1,9 +1,9 @@
-name: poetry-install
+name: poetry-install-check
 
 on: [push]
 
 jobs:
-  poetry-install:
+  poetry-install-check:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
