@@ -17,8 +17,14 @@ def demo(screen):
 
     scenes = []
 
+    game_text = "It's 8AM. You get up out of bed. What do you do?"
+    action_index = 0
+    for action in internals.ACTIONS.keys():
+        action_name = action.replace('_', ' ')
+        game_text += f"\n{action_index}- {action_name}"
+        action_index += 1
+
     while True:
-        game_text = "It's 8AM. You get up out of bed. What do you do?"
         new_screen = gameplay.DemoFrame(screen, game_text)
         effects = [
             new_screen,
@@ -28,19 +34,24 @@ def demo(screen):
         screen.play(scenes, repeat=False)
 
         user_input = gameplay.USER_INPUTS[-1]
-
-        if user_input == "quit\n":
+        if user_input == "q\n":
             sys.exit(0)
+
+        is_valid = validate_user_input(user_input)
+        if not is_valid:
+            continue
+        user_choice = int(user_input)
 
     ending.scene(screen)
 
-
-def process_user_input(user_input: str):
-    """
-        Process what the user input and try to translate it into an action
-    """
-    input_lowercase = user_input.lower().rstrip()
-
+def validate_user_input(user_input):
+    valid = False
+    if user_input.isnumeric():
+        user_choice = int(user_input)
+        if user_choice >= 0 and user_choice < len(ACTIONS):
+            valid = True
+    return valid
+        
 
 if __name__ == "__main__":
 

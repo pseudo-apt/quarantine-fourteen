@@ -77,7 +77,10 @@ def demo(screen):
         Mirage(
             screen,
             SpeechBubble(
-                '"Thanks for dropping by yesterday. Your results should be in \nwithin the next few days. Please keep yourself isolated \nfor the next 14 days inside your home."',
+                """\"Thanks for dropping by yesterday. Your results should be in 
+within the next few days. Please keep yourself isolated for 
+the next 14 days inside your home.\"
+""",
                 tail="L",
             ),
             screen.height // 2 + 3,
