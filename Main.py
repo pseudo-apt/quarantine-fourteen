@@ -31,8 +31,6 @@ def demo(screen):
     game_text += options
 
     while True:
-        with open("gametext.txt", "a") as f:
-            f.write(game_text)
         new_screen = gameplay.DemoFrame(screen, game_text)
         effects = [
             new_screen,
@@ -46,14 +44,17 @@ def demo(screen):
             sys.exit(0)
 
         is_valid = validate_user_input(user_input)
-        if not is_valid:
-            continue
+        #if not is_valid:
+        #    continue
         user_choice = int(user_input)
 
-        quarantine_state.apply_action(action_names[user_choice])
+        quarantine_status.apply_action(action_names[user_choice])
 
         game_text = f"It's {quarantine_status.current_time}. You're in {quarantine_status.current_room}.\n Your energy is {quarantine_status.energy}% and your filfillment is {quarantine_status.fulfillment}%. What do you do?"
         game_text += options
+
+        with open("gametext.txt", "a") as f:
+            f.write(game_text)
 
     ending.scene(screen)
 

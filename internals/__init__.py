@@ -125,7 +125,6 @@ class QuarantineStatus(object):
     # When applying an action, get the Action object from the global ACTIONS
     # dict: `state.apply_action(ACTIONS["drink_beer"])`
     def apply_action(self, action_name: str) -> str:
-        old_state = copy.deepcopy(self)
 
         action: Action = ACTIONS[action_name]
         result = action.apply(self)
@@ -133,7 +132,6 @@ class QuarantineStatus(object):
         if result is not None:
             # TODO: handle exception when no more iteration can be done
             self.current_time = next(self.time_gen)
-            self._action_history.append((old_state, action))
             return result
 
         return "Sorry... that's not something you can do now."
