@@ -1,8 +1,9 @@
-on: push
+name: poetry-install
+
+on: [push]
 
 jobs:
   poetry-install:
-    name: poetry-install
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -10,5 +11,4 @@ jobs:
       with:
         python_version: 3.8
         poetry_version: 1.0
-        working_directory: ./working_dir # Optional, defaults to '.'
         args: install
