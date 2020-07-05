@@ -12,12 +12,13 @@ form_data = {
 
 USER_INPUTS = []
 
+
 class DemoFrame(Frame):
     def __init__(self, screen, game_text):
         super(DemoFrame, self).__init__(
             screen,
             int(screen.height * 2 // 3),
-            int(screen.width * 2 // 3 ),
+            int(screen.width * 2 // 3),
             data=form_data,
             has_shadow=True,
             has_border=False,
@@ -26,7 +27,7 @@ class DemoFrame(Frame):
         layout = Layout([100])
         self.add_layout(layout)
         self.set_theme("monochrome")
-        num_rows = game_text.count("\n")+1
+        num_rows = game_text.count("\n") + 1
         layout.add_widget(Label(game_text, num_rows))
         layout.add_widget(
             TextBox(
@@ -53,4 +54,3 @@ class DemoFrame(Frame):
                     self.reset()
                     self.data = {}
                     raise StopApplication("Next scene")
-

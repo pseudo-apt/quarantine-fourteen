@@ -8,6 +8,7 @@ import internals
 
 from scenes import intro, gameplay, ending
 
+
 def demo(screen):
     """
 	Renders the intro sequence, and the user input game screens
@@ -20,7 +21,7 @@ def demo(screen):
     game_text = "It's 8AM. You get up out of bed. What do you do?"
     action_index = 0
     for action in internals.ACTIONS.keys():
-        action_name = action.replace('_', ' ')
+        action_name = action.replace("_", " ")
         game_text += f"\n{action_index}- {action_name}"
         action_index += 1
 
@@ -44,6 +45,7 @@ def demo(screen):
 
     ending.scene(screen)
 
+
 def validate_user_input(user_input):
     valid = False
     if user_input.isnumeric():
@@ -51,7 +53,7 @@ def validate_user_input(user_input):
         if user_choice >= 0 and user_choice < len(ACTIONS):
             valid = True
     return valid
-        
+
 
 if __name__ == "__main__":
 
@@ -59,4 +61,3 @@ if __name__ == "__main__":
     Screen.wrapper(demo)
 
     status = internals.QuarantineStatus(100, 100, [])
-
