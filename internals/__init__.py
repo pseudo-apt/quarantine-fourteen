@@ -131,6 +131,7 @@ class QuarantineStatus(object):
         result = action.apply(self)
 
         if result is not None:
+            # TODO: handle exception when no more iteration can be done
             self.current_time = next(self.time_gen)
             self._action_history.append((old_state, action))
             return result
