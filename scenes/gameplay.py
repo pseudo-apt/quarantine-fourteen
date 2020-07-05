@@ -12,7 +12,6 @@ form_data = {
 
 USER_INPUTS = []
 
-
 class DemoFrame(Frame):
     def __init__(self, screen, game_text):
         super(DemoFrame, self).__init__(

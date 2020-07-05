@@ -43,18 +43,16 @@ def demo(screen):
         if user_input == "q\n":
             sys.exit(0)
 
-        is_valid = validate_user_input(user_input)
-        #if not is_valid:
-        #    continue
+        is_valid = validate_user_input(user_input.rstrip())
+        if not is_valid:
+            continue
         user_choice = int(user_input)
 
         quarantine_status.apply_action(action_names[user_choice])
 
-        game_text = f"It's {quarantine_status.current_time}. You're in {quarantine_status.current_room}.\n Your energy is {quarantine_status.energy}% and your filfillment is {quarantine_status.fulfillment}%. What do you do?"
+        game_text = f"It's {quarantine_status.current_time[1]}. You're in {quarantine_status.current_room}.\n Your energy is {quarantine_status.energy}% and your filfillment is {quarantine_status.fulfillment}%. What do you do?"
         game_text += options
 
-        with open("gametext.txt", "a") as f:
-            f.write(game_text)
 
     ending.scene(screen)
 
@@ -63,7 +61,7 @@ def validate_user_input(user_input):
     valid = False
     if user_input.isnumeric():
         user_choice = int(user_input)
-        if user_choice >= 0 and user_choice < len(ACTIONS):
+        if user_choice >= 0 and user_choice < len(internals.ACTIONS):
             valid = True
     return valid
 
