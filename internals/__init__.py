@@ -46,10 +46,14 @@ ACTIONS: Dict[str, Action] = {
         +5, +10, "You wonder why you ever order delivery until you look at the clock."
     ),  # TODO: decrease energy from eating too much, increase fulfillment multiplicatively
     "scroll_reddit": BasicAction(
-        -5, -5, "....."
+        -5,
+        -5,
+        "You're getting really good at recognizing reposts. Those cat gifs are cute, though.",
     ),  # TODO: decrease energy, decrease fulfillment multiplicatively
     "check_email": BasicAction(
-        0, 0, "Nothing."
+        0,
+        0,
+        'Another corporate email about "troubling and uncertain times" and a 20% off clearance sale.',
     ),  # TODO: decrease fulfillment multiplicatively
     "buy_online": BasicAction(
         +10,
@@ -69,7 +73,7 @@ ACTIONS: Dict[str, Action] = {
     # "nap": BasicAction(
     #     +12, -10, "What a waste of time. Refreshing, though."
     # ),  # TODO: drop fulfillment to zero if a portion of day is spent napping
-    "zoom_call": BasicAction(-10, 0, "....."),
+    "zoom_call": BasicAction(-10, 0, "Sorry, could you repeat that? The call froze."),
     # TODO: decrease fulfillment multiplicatively
     "people_watch": BasicAction(
         0, +15, "A few people drift by, maybe 30% slower than they'd usually walk."
