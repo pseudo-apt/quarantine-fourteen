@@ -87,7 +87,8 @@ def time_of_day_generator():
 
 class QuarantineStatus(object):
     """
-    Object for tracking user state.
+    Object for tracking user state. Possible rooms are "bedroom",
+    "living room", and "kitchen".
     """
 
     def __init__(
@@ -98,6 +99,7 @@ class QuarantineStatus(object):
     ):
         self.energy: int = energy
         self.fulfillment: int = fulfillment
+        self.current_room = "bedroom"
         self._action_history: List[Tuple[QuarantineStatus, Action]] = action_history
 
     @property
