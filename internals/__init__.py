@@ -15,9 +15,7 @@ class Action:
 
 
 class BasicAction(Action):
-    """Class for an action that can be done by the user.
-
-    """
+    """Class for an action that can be done by the user."""
 
     def __init__(self, delta_energy: int, delta_fulfillment: int, message: str):
         def _basic_apply(state: "QuarantineStatus") -> str:
