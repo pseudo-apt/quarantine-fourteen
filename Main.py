@@ -26,7 +26,7 @@ def demo(screen):
         action_index += 1
     game_text += options
 
-    while True:
+    while quarantine_status.day_count <= 14:
         scenes = []
         new_screen = gameplay.DemoFrame(screen, game_text)
         effects = [
