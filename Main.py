@@ -16,7 +16,7 @@ def demo(screen):
 
     quarantine_status = internals.QuarantineStatus(10, 10, [])
 
-    game_text = "It's 8AM. You get up out of bed. What do you do?\n"
+    game_text = f"It's 8AM on day {quarantine_status.current_time[0]} of your quarantine. You get up out of bed. What do you do?\n"
     action_index = 0
     options = ""
     action_names = [a for a in internals.ACTIONS.keys()]
@@ -51,7 +51,7 @@ def demo(screen):
         game_text = f"{result}\n\n"
 
         game_text += (
-            f"It's {quarantine_status.current_time[1]}. You're in the {quarantine_status.current_room}.\n "
+            f"It's {quarantine_status.current_time[1]} on day {quarantine_status.current_time[0]} of your quarantine. You're in the {quarantine_status.current_room}.\n"
             f"Your energy is {quarantine_status.energy}% and your fulfillment is "
             f"{quarantine_status.fulfillment}%. What do you do?\n"
         )
