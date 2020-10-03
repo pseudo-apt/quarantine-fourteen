@@ -124,7 +124,7 @@ class QuarantineStatus(object):
         self.fulfillment: int = fulfillment
         self.current_room = "bedroom"
         self.time_gen = time_of_day_generator()
-        self.current_time = next(self.time_gen)
+        self.day_count, self.current_time = next(self.time_gen)
         self._action_history: List[Tuple[QuarantineStatus, Action]] = action_history
 
     @property
@@ -154,7 +154,7 @@ class QuarantineStatus(object):
 
         if result is not None:
             # TODO: handle exception when no more iteration can be done
-            self.current_time = next(self.time_gen)
+            self.day_count, self.current_time = next(self.time_gen)
             return result
 
         return "Sorry... that's not something you can do now."
