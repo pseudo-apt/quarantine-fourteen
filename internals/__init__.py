@@ -102,10 +102,10 @@ TIME_OF_DAY = {
 
 
 def time_of_day_generator():
-    for day in range(1, 15):
+    for day in range(0, 15):
         for day_portion in TIME_OF_DAY:
             for time in TIME_OF_DAY[day_portion]:
-                yield day, time
+                yield day + 1, time
 
 
 class QuarantineStatus(object):
