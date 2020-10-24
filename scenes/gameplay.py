@@ -17,7 +17,7 @@ class DemoFrame(Frame):
     def __init__(self, screen, game_text):
         super(DemoFrame, self).__init__(
             screen,
-            int(screen.height * 2 // 3),
+            screen.height,
             int(screen.width * 2 // 3),
             data=form_data,
             has_shadow=True,

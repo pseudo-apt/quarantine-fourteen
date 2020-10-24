@@ -16,7 +16,8 @@ def demo(screen):
 
     quarantine_status = internals.QuarantineStatus(10, 10, [])
 
-    game_text = f"It's 8AM on day {quarantine_status.day_count} of your quarantine. You get up out of bed. What do you do?\n"
+    game_text = f"{internals.START_SCENE}"
+    game_text += f"It's 8AM on day {quarantine_status.day_count} of your quarantine. You get up out of bed. What do you do?\n"
     action_index = 0
     options = ""
     action_names = [a for a in internals.ACTIONS.keys()]
@@ -46,7 +47,9 @@ def demo(screen):
 
         user_choice = int(user_input)
 
-        result = quarantine_status.apply_action(action_names[user_choice])
+        action = action_names[user_choice]
+
+        result = quarantine_status.apply_action(action)
 
         game_text = f"{result}\n\n"
 

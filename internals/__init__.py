@@ -27,63 +27,106 @@ class BasicAction(Action):
         self.delta_energy = delta_energy
         self.delta_fulfillment = delta_fulfillment
 
+START_SCENE = """
+█▒▌▒░░░║█▌H░░░░»░»»░░░»░░»»░░░░░░░░░░░░░░║██▓▓░░░░»»»``;▄▄▓█████████
+█▒▌▌»»░║█▌H»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»▐██▓▓░»»»▄▄▄▓███████████▀╙┴    
+███████████▓▓▓▓▓▓▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄L⌂;;,▐██╫▓▄▓▓████████▀▀    
+█▀▓▓▀▀▀███████████████████████████████████████████▀▀▀╙''`
+█░╠⌡   ▐█▌⌐  ``   `````````  ' `L└└└╙╙╙╙╙╙███▀▌````` `     
+█░╚╠   ▐█▌                                ║█▌╫▌```                     
+█╫╣╫╫╫╫▓██                                 ╫██▌
+█╫╫╫╫╦╩▓██                                 ╫███
+█╫╫╫╫╦╫▓██                                  ███▓
+█╫╫╫╫Ñ╫▓█▌                                 ▓▓██╣╫
+█▓╫╫▄▄▄▓█▌                                  ▓██▓╫▄▐
+██████████████████████████████████▀▀▀▀▀▀▀▀▀███████▓▓▄▒N╦▄
+█████████████████████████▀▀▀▀▀╬╫ÑÜ╫╫╣╫╫╫╣╫Ñ╬K╢▀▓███████▓▄▒M╦▄
+████████▓███████▀▀▀▀▀▀▀▀╫╫╣╫Ñ╬K╢╫╫▓╬╫╫╫▓╫╫▓▓▓╫╣╫╫ÑÑ╬▀▀████████▓▓█▓▓▓
+▀▀▀▀▀▀▓▓▀▀▀▀▀▀▀█▌╫╣▒▓▓▓▓▓▓▌╦╟▓▓▓╫╫▓▓╣▓▓▓▓╫▓╫╣╫╫╫╫╬╫N╦╬▀▓██████████▓▌
+▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓╫Ñ╠╫▓▓▓▓▓▌▓▓║▀▓╫╫▓╫╫╫╫▓▓▓▌╬▀▓▒▓Ñ╫╫╫╫╫Ñ░░░╠▀▀████████
+▌╣▓▓▓▓████▓▓▓██████▌▓▓╫▒N╬▌▓▓▓▓▓╫▓▓█▓▄░╫▓▓▓▓▓▓╫╫╫╫▓╫╫▓▓▓▓╬╫N░▀██████
+██▌╣█▓▓██████████▓█▓╫▓▓▌╫░Ñ▓▓▓▓▓▓╬▓▓▓█▓▓▓▓▓▓▓▌▓▓▓▓╫▓▓▓▌▓▌▓█▌Ñ╫▀█████
+███▌╣██████▓███▓▓▓█▓█▓█▓█M╫╫▓▓▓▓▓▓▒▓█▓▓██▓▓▓▓▌▓██▓▓▓▓█▓╫▌▓██▓╫╬█████
+█▓██████████████▓▓▓▓█▓████░╫▓▓▓▓▌╫▓▓▓▓█▓▓██▓▓▓▓▓▓▓▓███▓█▓▓▓██▒Ñ▓████
+██████████████▓▓▓▓███████N░╚▓▓▓▓▓▓▓╫▓█████▓▓▓▓▓▓▓▓██▓███▓███▌Ñ░█████
+"""
 
+# Action names
+ACTION_GET_SLOSHED = "drink_beer"
+ACTION_ORDER_TAKEOUT = "eat_delivery"
+ACTION_COOK_FOOD = "eat_homecooked"
+ACTION_INFINITE_REDDIT = "scroll_reddit"
+ACTION_REFRESH_INBOX = "check_email"
+ACTION_ONLINE_SHOPPING = "buy_online"
+ACTION_NETFLIX_AND_CHILL_W_YOURSELF = "binge_netflix"
+ACTION_BRO_SPLIT_IT_UP = "workout"
+ACTION_VIDEO_CHAT_WITH_THE_FAM = "zoom_call"
+ACTION_STARE_OUT_WINDOW = "people_watch"
+ACTION_COFFEEDENCE = "drink_caffeine"
+ACTION_DANCE_LIKE_NO_ONES_WATCHING = "listen_to_radio"
+
+# ASCII art associated with each action
+ACTIONS_ASCII_ART: Dict[str, str] = {
+
+}
+
+# Action properties
 ACTIONS: Dict[str, Action] = {
-    "drink_beer": BasicAction(
+    ACTION_GET_SLOSHED: BasicAction(
         -10, +10, "You feel refreshed, and a little bit light-headed."
     ),  # TODO: drunk_function?
     # "move_room": BasicAction(
     #     -5, 0, "You're here. Now what?"
     # ),  # TODO: decrease fulfillment multiplicatively
-    "eat_delivery": BasicAction(
+    ACTION_ORDER_TAKEOUT: BasicAction(
         +5,
         +5,
         "The delivery charge brought the price up a surprising amount. Still... you deserved it.",
     ),  # TODO: decrease energy and fulfillment multiplicatively
-    "eat_homecooked": BasicAction(
+    ACTION_COOK_FOOD: BasicAction(
         +5, +10, "You wonder why you ever order delivery until you look at the clock."
     ),  # TODO: decrease energy from eating too much, increase fulfillment multiplicatively
-    "scroll_reddit": BasicAction(
+    ACTION_INFINITE_REDDIT: BasicAction(
         -5,
         -5,
         "You're getting really good at recognizing reposts. Those cat gifs are cute, though.",
     ),  # TODO: decrease energy, decrease fulfillment multiplicatively
-    "check_email": BasicAction(
+    ACTION_REFRESH_INBOX: BasicAction(
         0,
         0,
         'Another corporate email about "troubling and uncertain times" and a 20% off clearance sale.',
     ),  # TODO: decrease fulfillment multiplicatively
-    "buy_online": BasicAction(
+    ACTION_ONLINE_SHOPPING: BasicAction(
         +10,
         +20,
         "How are you spending the same amount and you can't even leave your apartment?",
     ),  # TODO: big decrease in energy and fulfillment
-    "binge_netflix": BasicAction(
+    ACTION_NETFLIX_AND_CHILL_W_YOURSELF: BasicAction(
         -10,
         +20,
         "Another episode down of a show you'll watch most of and then forget.\n "
         "Not the worst use of time.",
     ),  # TODO: big decrease in fulfillment
     # "cook_food": BasicAction(-20, +20, "TODO"),  # TODO: big increase in fulfillment
-    "workout": BasicAction(
+    ACTION_BRO_SPLIT_IT_UP: BasicAction(
         -20, +5, "You're tired, but in a good way."
     ),  # TODO: Fibonacci increase in fulfillment
     # "nap": BasicAction(
     #     +12, -10, "What a waste of time. Refreshing, though."
     # ),  # TODO: drop fulfillment to zero if a portion of day is spent napping
-    "zoom_call": BasicAction(-10, 0, "Sorry, could you repeat that? The call froze."),
+    ACTION_VIDEO_CHAT_WITH_THE_FAM: BasicAction(-10, 0, "Sorry, could you repeat that? The call froze."),
     # TODO: decrease fulfillment multiplicatively
-    "people_watch": BasicAction(
+    ACTION_STARE_OUT_WINDOW: BasicAction(
         0, +15, "A few people drift by, maybe 30% slower than they'd usually walk."
     ),
-    "drink_caffeine": BasicAction(
+    ACTION_COFFEEDENCE: BasicAction(
         +20,
         0,
         "The buzzing at the base of your skull is louder. \n"
         "Maybe you should get it looked at?",
     ),
     # TODO: drink too much, can't sleep/nap for 3 actions
-    "listen_to_radio": BasicAction(
+    ACTION_DANCE_LIKE_NO_ONES_WATCHING: BasicAction(
         0,
         +15,
         "For better or for worse, you're now more informed about the \n"
