@@ -1,6 +1,8 @@
 import copy
 from typing import Callable, Dict, List, Optional, Tuple
 
+from . import asciiart
+
 
 class Action:
     """
@@ -28,30 +30,6 @@ class BasicAction(Action):
         self.delta_fulfillment = delta_fulfillment
 
 
-START_SCENE = """
-█▒▌▒░░░║█▌H░░░░»░»»░░░»░░»»░░░░░░░░░░░░░░║██▓▓░░░░»»»``;▄▄▓█████████
-█▒▌▌»»░║█▌H»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»▐██▓▓░»»»▄▄▄▓███████████▀╙┴    
-███████████▓▓▓▓▓▓▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄L⌂;;,▐██╫▓▄▓▓████████▀▀    
-█▀▓▓▀▀▀███████████████████████████████████████████▀▀▀╙''`
-█░╠⌡   ▐█▌⌐  ``   `````````  ' `L└└└╙╙╙╙╙╙███▀▌````` `     
-█░╚╠   ▐█▌                                ║█▌╫▌```                     
-█╫╣╫╫╫╫▓██                                 ╫██▌
-█╫╫╫╫╦╩▓██                                 ╫███
-█╫╫╫╫╦╫▓██                                  ███▓
-█╫╫╫╫Ñ╫▓█▌                                 ▓▓██╣╫
-█▓╫╫▄▄▄▓█▌                                  ▓██▓╫▄▐
-██████████████████████████████████▀▀▀▀▀▀▀▀▀███████▓▓▄▒N╦▄
-█████████████████████████▀▀▀▀▀╬╫ÑÜ╫╫╣╫╫╫╣╫Ñ╬K╢▀▓███████▓▄▒M╦▄
-████████▓███████▀▀▀▀▀▀▀▀╫╫╣╫Ñ╬K╢╫╫▓╬╫╫╫▓╫╫▓▓▓╫╣╫╫ÑÑ╬▀▀████████▓▓█▓▓▓
-▀▀▀▀▀▀▓▓▀▀▀▀▀▀▀█▌╫╣▒▓▓▓▓▓▓▌╦╟▓▓▓╫╫▓▓╣▓▓▓▓╫▓╫╣╫╫╫╫╬╫N╦╬▀▓██████████▓▌
-▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓╫Ñ╠╫▓▓▓▓▓▌▓▓║▀▓╫╫▓╫╫╫╫▓▓▓▌╬▀▓▒▓Ñ╫╫╫╫╫Ñ░░░╠▀▀████████
-▌╣▓▓▓▓████▓▓▓██████▌▓▓╫▒N╬▌▓▓▓▓▓╫▓▓█▓▄░╫▓▓▓▓▓▓╫╫╫╫▓╫╫▓▓▓▓╬╫N░▀██████
-██▌╣█▓▓██████████▓█▓╫▓▓▌╫░Ñ▓▓▓▓▓▓╬▓▓▓█▓▓▓▓▓▓▓▌▓▓▓▓╫▓▓▓▌▓▌▓█▌Ñ╫▀█████
-███▌╣██████▓███▓▓▓█▓█▓█▓█M╫╫▓▓▓▓▓▓▒▓█▓▓██▓▓▓▓▌▓██▓▓▓▓█▓╫▌▓██▓╫╬█████
-█▓██████████████▓▓▓▓█▓████░╫▓▓▓▓▌╫▓▓▓▓█▓▓██▓▓▓▓▓▓▓▓███▓█▓▓▓██▒Ñ▓████
-██████████████▓▓▓▓███████N░╚▓▓▓▓▓▓▓╫▓█████▓▓▓▓▓▓▓▓██▓███▓███▌Ñ░█████
-"""
-
 # Action names
 ACTION_GET_SLOSHED = "drink_beer"
 ACTION_ORDER_TAKEOUT = "eat_delivery"
@@ -67,7 +45,20 @@ ACTION_COFFEEDENCE = "drink_caffeine"
 ACTION_DANCE_LIKE_NO_ONES_WATCHING = "listen_to_radio"
 
 # ASCII art associated with each action
-# ACTIONS_ASCII_ART: Dict[str, str] = {}
+ACTIONS_ASCII_ART: Dict[str, str] = {
+    ACTION_GET_SLOSHED: asciiart.ACTION_GET_SLOSHED_SCENE,
+    ACTION_ORDER_TAKEOUT: asciiart.ACTION_ORDER_TAKEOUT_SCENE,
+    ACTION_COOK_FOOD: asciiart.ACTION_COOK_FOOD_SCENE,
+    ACTION_INFINITE_REDDIT: asciiart.ACTION_INFINITE_REDDIT_SCENE,
+    ACTION_REFRESH_INBOX: asciiart.ACTION_REFRESH_INBOX_SCENE,
+    ACTION_ONLINE_SHOPPING: asciiart.ACTION_ONLINE_SHOPPING_SCENE,
+    ACTION_NETFLIX_AND_CHILL_W_YOURSELF: asciiart.ACTION_NETFLIX_AND_CHILL_W_YOURSELF_SCENE,
+    ACTION_BRO_SPLIT_IT_UP: asciiart.ACTION_BRO_SPLIT_IT_UP_SCENE,
+    ACTION_VIDEO_CHAT_WITH_THE_FAM: asciiart.ACTION_VIDEO_CHAT_WITH_THE_FAM_SCENE,
+    ACTION_STARE_OUT_WINDOW: asciiart.ACTION_STARE_OUT_WINDOW_SCENE,
+    ACTION_COFFEEDENCE: asciiart.ACTION_COFFEEDENCE_SCENE,
+    ACTION_DANCE_LIKE_NO_ONES_WATCHING: asciiart.ACTION_DANCE_LIKE_NO_ONES_WATCHING_SCENE,
+}
 
 # Action properties
 ACTIONS: Dict[str, Action] = {

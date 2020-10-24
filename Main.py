@@ -3,6 +3,7 @@ from asciimatics.scene import Scene
 import sys
 
 import internals
+from internals import asciiart
 
 from scenes import intro, gameplay, ending
 
@@ -16,7 +17,7 @@ def demo(screen):
 
     quarantine_status = internals.QuarantineStatus(10, 10, [])
 
-    game_text = f"{internals.START_SCENE}"
+    game_text = f"{asciiart.START_SCENE}"
     game_text += f"It's 8AM on day {quarantine_status.day_count} of your quarantine. You get up out of bed. What do you do?\n"
     action_index = 0
     options = ""
@@ -46,12 +47,12 @@ def demo(screen):
             continue
 
         user_choice = int(user_input)
-
         action = action_names[user_choice]
 
-        result = quarantine_status.apply_action(action)
+        game_text = f"{internals.ACTIONS_ASCII_ART[action]}"
 
-        game_text = f"{result}\n\n"
+        result = quarantine_status.apply_action(action)
+        game_text += f"{result}\n\n"
 
         game_text += (
             f"It's {quarantine_status.current_time} on day {quarantine_status.day_count} of your quarantine. You're in the {quarantine_status.current_room}.\n"
