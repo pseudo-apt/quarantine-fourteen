@@ -27,6 +27,7 @@ class BasicAction(Action):
         self.delta_energy = delta_energy
         self.delta_fulfillment = delta_fulfillment
 
+
 START_SCENE = """
 █▒▌▒░░░║█▌H░░░░»░»»░░░»░░»»░░░░░░░░░░░░░░║██▓▓░░░░»»»``;▄▄▓█████████
 █▒▌▌»»░║█▌H»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»▐██▓▓░»»»▄▄▄▓███████████▀╙┴    
@@ -66,9 +67,7 @@ ACTION_COFFEEDENCE = "drink_caffeine"
 ACTION_DANCE_LIKE_NO_ONES_WATCHING = "listen_to_radio"
 
 # ASCII art associated with each action
-ACTIONS_ASCII_ART: Dict[str, str] = {
-
-}
+# ACTIONS_ASCII_ART: Dict[str, str] = {}
 
 # Action properties
 ACTIONS: Dict[str, Action] = {
@@ -114,7 +113,9 @@ ACTIONS: Dict[str, Action] = {
     # "nap": BasicAction(
     #     +12, -10, "What a waste of time. Refreshing, though."
     # ),  # TODO: drop fulfillment to zero if a portion of day is spent napping
-    ACTION_VIDEO_CHAT_WITH_THE_FAM: BasicAction(-10, 0, "Sorry, could you repeat that? The call froze."),
+    ACTION_VIDEO_CHAT_WITH_THE_FAM: BasicAction(
+        -10, 0, "Sorry, could you repeat that? The call froze."
+    ),
     # TODO: decrease fulfillment multiplicatively
     ACTION_STARE_OUT_WINDOW: BasicAction(
         0, +15, "A few people drift by, maybe 30% slower than they'd usually walk."
